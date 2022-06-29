@@ -12,6 +12,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
     RegistroComponent,
     ActualizarUsuarioComponent,
     UsuariosComponent,
-    HotelesComponent
+    HotelesComponent,
+    EventosComponent,
+    FacturasComponent
   ],
   imports: [
     BrowserModule,

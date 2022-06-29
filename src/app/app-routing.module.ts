@@ -7,14 +7,17 @@ import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actu
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { UsuarioGuard } from './services/usuario.guard';
-
+import { EventosComponent } from './components/eventos/eventos.component'; 
+import { FacturasComponent } from './components/facturas/facturas.component';
 const routes: Routes = [
   { path: 'pagina-inicio', component: PaginaInicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'actualizar-usuario',component: ActualizarUsuarioComponent},
   { path: 'usuarios', component: UsuariosComponent,canActivate:[UsuarioGuard]},
-  { path: 'hoteles', component: HotelesComponent}
+  { path: 'hoteles', component: HotelesComponent},
+  { path: 'eventos', component: EventosComponent},
+  { path: 'factura', component: FacturasComponent}
   
 ];
 
