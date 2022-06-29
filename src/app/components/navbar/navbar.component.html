@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-ligth bg-dark">
+    <div class="container px-5">
+        <img src="https://i.ibb.co/Mszy7wv/logo3.png" class="logo img-fluid" width="120px" alt="...">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="navbar nav-link" routerLink="pagina-inicio">Inicio</a></li>
+                <li class="nav-item"><a class="navbar nav-link" routerLink="usuarios">Usuarios</a></li>
+
+                <li class="nav-item"><a class="navbar nav-link" routerLink="hoteles">Hoteles</a></li>
+                <li class="nav-item"><a class="navbar nav-link" href="">Habitaciones</a></li>
+                <li class="nav-item"><a class="navbar nav-link" href="">Eventos</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" routerLink="/actualizar-usuario">Editar Perfil</a></li>
+                        <li><a (click)="logOut()" class="dropdown-item" routerLink="/login">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" *ngIf="_usuarioService.obtenerIdentidad()">
+                      {{_usuarioService.obtenerIdentidad().nombre}}</a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>

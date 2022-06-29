@@ -1,0 +1,31 @@
+<br>
+
+<div class="colum">
+<div *ngFor="let hotel of hotelModelGet">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://cdn-icons.flaticon.com/png/512/4524/premium/4524932.png?token=exp=1656457138~hmac=5a2984420e0c5de390b44e44cc6c2fd4" class="img-fluid rounded-start" width="300px" height="300px" alt="..." style="margin-left: 50px ;"> 
+      </div>
+      <div class="col-md-8" >
+        <div class="card-body">
+          <h5 class="card-title">Nombre Hotel</h5>
+          <h5 class="card-title text-muted" style="font-size: 50px;">{{hotel.nombre}}</h5>
+          <h5 class="card-text">Dirección</h5>
+          <h5 class="card-text text-muted">{{hotel.direccion}}</h5>
+          <h5 class="card-text">Pais</h5>
+          <h5 class="card-text text-muted">{{hotel.pais}}</h5>
+         
+        </div>
+        <button class="btn btn-dark" type="button" style="margin-left: 75%;">
+          Habitaciones
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+  <div class="asado text-white mb-3 mb-md-0 ">
+    Copyright © 2022. Todos los derechos reservados por el grupo 3.
+</div>
