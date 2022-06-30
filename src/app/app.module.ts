@@ -14,6 +14,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FacturasComponent } from './components/facturas/facturas.component';
     UsuariosComponent,
     HotelesComponent,
     EventosComponent,
-    FacturasComponent
+    FacturasComponent,
+    ServiciosComponent
   ],
   imports: [
     BrowserModule,
