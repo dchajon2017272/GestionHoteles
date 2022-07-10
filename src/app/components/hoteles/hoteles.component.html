@@ -1,29 +1,150 @@
+<header class="bg-dark py-8">
+  <div class="container px-100">
+      <div class="row gx-100 align-items-center justify-content-center">
+          <div class="col-lg-8 col-xl-7 col-xxl-6"></div>
+          <div class="my-4 text-center text-xl-start"></div>
+          <h1 class="display-5 fw-bolder text-white mb-2"><i class="bi bi-building"></i> Hoteles</h1>
+          <p class=" fw-bolder lead fw-normal text-white-50 mb-4 justify-content-center">Los mejores hoteles con todo tipo de precios
+            encuentralos aquí.
+          </p>
+          
+      </div>
+  </div>
+  </header>
 <br>
 
-<div class="colum">
-<div *ngFor="let hotel of hotelModelGet">
+<div class="container" >
+  <div class="input-group mb-3">
+    <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="Buscar Hotel" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
+  </div>
+<div  *ngIf="hotelModelGet">
+  <!-- Button Abrir Modal Agregar Producto -->
+<button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'||_usuarioService.obtenerIdentidad().rol=='Admin'"  >
+  <i class="bi bi-plus-circle"></i> Agregar Hotel
+</button>
+</div>
+<br>
+<br>
+<div *ngFor="let hotel of hotelModelGet | search:search" >
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="https://cdn-icons.flaticon.com/png/512/4524/premium/4524932.png?token=exp=1656457138~hmac=5a2984420e0c5de390b44e44cc6c2fd4" class="img-fluid rounded-start" width="300px" height="300px" alt="..." style="margin-left: 50px ;"> 
+        <img src="https://i.ibb.co/TPh75qs/hotel.png" class="img-fluid rounded-start" width="300px" height="300px" alt="..." > 
       </div>
-      <div class="col-md-8" >
+      <div class="col-md-8"  >
         <div class="card-body">
+          <h5 class="card-text text-muted" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'||_usuarioService.obtenerIdentidad().rol=='Admin'">{{hotel._id}}</h5>
           <h5 class="card-title">Nombre Hotel</h5>
           <h5 class="card-title text-muted" style="font-size: 50px;">{{hotel.nombre}}</h5>
           <h5 class="card-text">Dirección</h5>
           <h5 class="card-text text-muted">{{hotel.direccion}}</h5>
           <h5 class="card-text">Pais</h5>
           <h5 class="card-text text-muted">{{hotel.pais}}</h5>
-         
+          
+          <div class="container">
+            <div class="row" >
+              <div class="col"  *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'||_usuarioService.obtenerIdentidad().rol=='Admin'">
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample" (click)="getHotelId(hotel._id)" >
+                <i class="bi bi-pencil-square"></i> Editar
+                </button>
+               
+                <button type="button" class="btn btn-primary" (click)="deleteHoteles(hotel._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button>
+                
+              </div>
+              <div class="col" >
+                <button class="btn btn-dark" type="button"  [routerLink]="['/habitaciones',hotel._id]"  >
+                  <i class="bi bi-door-open"></i>Habitaciones
+                </button>
+                <button class="btn btn-dark" type="button"  [routerLink]="['/eventos',hotel._id]"  >
+                  <i class="bi bi-calendar-event"></i>  Eventos
+                </button>
+                <button class="btn btn-dark" type="button" [routerLink]="['/servicios',hotel._id]"  >
+                  <i class="bi bi-wrench-adjustable-circle"></i>  Servicios
+                </button>
+              </div>
+            </div>
+          </div>
+          
         </div>
-        <button class="btn btn-dark" type="button" style="margin-left: 75%;">
-          Habitaciones
-        </button>
+       
+        
       </div>
     </div>
   </div>
 </div>
 
+<!-- Modal Agregar Hotel -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="hotelModelPost.nombre">
+          </div>
+          <div class="mb-3">
+              <label for="inputDireccion" class="form-label">Direccion</label>
+              <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+              [(ngModel)]="hotelModelPost.direccion">
+            </div>
+          <div class="mb-3">
+            <label for="inputPais" class="form-label">Pais</label>
+            <input type="text" class="form-control" id="inputPais" name="pais" #pais="ngModel"
+            [(ngModel)]="hotelModelPost.pais">
+          </div>
+         
+          
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postHoteles()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- offCanvas Editar Producto -->
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+        [(ngModel)]="hotelModelGetId.nombre">
+      </div>
+      <div class="mb-3">
+          <label for="inputDireccion" class="form-label">Direccion</label>
+          <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="hotelModelGetId.direccion">
+        </div>
+      <div class="mb-3">
+        <label for="inputPais" class="form-label">Pais</label>
+        <input type="text" class="form-control" id="inputPais" name="pais" #pais="ngModel"
+        [(ngModel)]="hotelModelGetId.pais">
+      </div>
+      <button type="button" class="btn btn-dark"  (click)="putHoteles()" data-bs-dismiss="offcanvas">Editar Hotel</button>
+
+      
+      
+    </form>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
   
 <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
   <div class="asado text-white mb-3 mb-md-0 ">

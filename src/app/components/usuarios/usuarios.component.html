@@ -1,27 +1,27 @@
 <div class="container">
     <!-- Button Abrir Modal Agregar Producto -->
     <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
-      Agregar Usuario
+      <i class="bi bi-plus-circle"></i> Agregar Usuario
     </button>
     <br>
     <br>
     <div class="row">
       <div class="col-12 col-md-4" *ngFor="let user of usuarioModelGet">
         <div class="card text-center mb-3">
-          <div class="card-header">
+          <div class="card-header ">
             {{ user._id }}
           </div>
-          <img src="https://cdn-icons-png.flaticon.com/512/3061/3061341.png" class="hola" width="200px" height="200px" alt="Usuarios" >
+          <img src="https://i.ibb.co/N6RTg3d/user.png" class="hola" width="200px" height="200px" alt="Usuarios" >
           <div class="card-body">
             <h5 class="card-title">{{user.nombre}} {{user.apellido}}</h5>
             
             <p class="card-text">
               Email: {{user.email}}
             </p>
-            <button type="button" class="btn btn-dark" (click)="deleteUsuarios(user._id)">Eliminar</button>
+            <button type="button" class="btn btn-dark" (click)="deleteUsuarios(user._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button>
             <button class="btno btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample" (click)="getUsuarioId(user._id)">
-                Editar
+              <i class="bi bi-pencil-square"></i> Editar
               </button>
               <!--<button type="button" class="btn btn-danger" [routerLink]="['/verEmpresas',empr._id]">Ver</button>-->
           </div>
@@ -107,16 +107,17 @@
             [(ngModel)]="usuarioModelGetId.email">
           </div>
           <div class="mb-3">
-            <label for="inputPassword" class="form-label">Password</label>
-            <input type="text" class="form-control" id="inputPassword" name="password" #password="ngModel"
-            [(ngModel)]="usuarioModelGetId.password">
+            <label for="inputRol" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputRol" name="rol" #rol="ngModel"
+            [(ngModel)]="usuarioModelGetId.rol">
           </div>
       <button type="button" class="btn btn-dark"  (click)="putUsuarios()" data-bs-dismiss="offcanvas">Editar Usuario</button>
   
       </form>
     </div>
     </div>
-  
+  <br>
+  <br>
   <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
     <div class="asado text-white mb-3 mb-md-0 ">
       Copyright © 2022. Todos los derechos reservados por el grupo 3.

@@ -1,0 +1,103 @@
+<header class="bg-dark py-8">
+    <div class="container px-100">
+        <div class="row gx-100 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6"></div>
+            <div class="my-4 text-center text-xl-start"></div>
+            <h1 class="display-5 fw-bolder text-white mb-2"><i class="bi bi-receipt-cutoff"></i> Facturación</h1>
+            <p class=" fw-bolder lead fw-normal text-white-50 mb-4 justify-content-center">
+            </p>
+            
+        </div>
+    </div>
+    </header>
+<div class="container"  >
+    <br>
+   
+    
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+        <i class="bi bi-plus-circle"></i>  Agregar Factura
+    </button>
+    <br>
+    
+    <hr>
+    
+  <table class="table" >
+      <thead>
+        <tr>
+          <th scope="col">ID Factura</th>
+          <th scope="col">Nit</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">ID Reservación</th>
+          
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let fact of facturaModelGet ">
+        
+          <th scope="row">{{ fact._id }}</th>
+          <td>{{fact.nit}}</td>
+          <td>{{fact.estado}}</td>
+          <td>{{fact.fecha}}</td>
+          <td>{{fact.idReservacion}}</td>
+         
+         <!-- <td> <img src="https://cdn-icons-png.flaticon.com/512/726/726526.png" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProductoSucursal" width="70px" height="70px" class="imagen" alt="..." (click)="getProductosId(prod._id)"></td>-->
+  
+            
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <!-- Modal Agregar Productos -->
+  <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Factura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+                <label for="inputNit" class="form-label">Nit</label>
+                <input type="text" class="form-control" id="inputNit" name="nit" 
+                #nit="ngModel" [(ngModel)]="facturaModelPost.nit">
+              </div>
+            <div class="mb-3">
+              <label class="form-label" for="form3Example3c">Estado Factura</label>
+              <select class="form-select" aria-label="Default select example" id="form3Example3c" 
+              id="inputEstado" name="estado" 
+              #estado="ngModel" [(ngModel)]="facturaModelPost.estado" required>
+                          <option value="Pagado">Pagado</option>
+                          <option value="Pendiente">Pendiente</option>
+                        </select>
+            </div>
+            <div class="mb-3">
+              <label for="inputFecha" class="form-label">Fecha</label>
+              <input type="text" class="form-control" id="inputFecha" name="fecha" 
+              #fecha="ngModel" [(ngModel)]="facturaModelPost.fecha">
+            </div>
+            <div class="mb-3">
+              <label for="inputIdReservacion" class="form-label">ID Reservación</label>
+              <input type="text" class="form-control" id="inputIdReservacion" name="idReservacion" #idReservacion="ngModel"
+              [(ngModel)]="facturaModelPost.idReservacion">
+            </div>
+          
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postFacturas()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  
+  <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+  </div>
+  
