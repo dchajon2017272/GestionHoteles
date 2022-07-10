@@ -1,0 +1,31 @@
+<br>
+<div class="container" >
+<div >
+  <!-- Button Abrir Modal Agregar Producto 
+<button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"  >
+  Agregar Habitacion
+</button>-->
+</div>
+<br>
+<div class="container-fluid p-0" *ngFor="let event of eventoModelGet">
+    <div class="row g-0 ">
+        <div class="col-lg-6 order-lg-2 text-white showcase-img">
+            <img src="https://i.ibb.co/VQXFdxS/events.png" class="imagen bd-placeholder-img img-fluid col-lg-8" width="50%" height="auto" alt="Eventos"></div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2 class=" col-lg-8 m-auto mb-3" style="text-align:left; font-size: 70px;">{{event.nombreEvento}} </h2>
+            <h5 class=" col-lg-8 m-auto mb-2 text-muted" style="text-align:left ;">{{event.descripcion}}</h5>
+            <h5 class=" col-lg-8 m-auto text-muted mb-3" style="text-align:left ;">Precio: Q{{event.precio}}</h5>
+           
+        </div>
+    </div>
+</div>
+</div>
+
+
+<br>
+<br>
+<br>
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+  <div class="asado text-white mb-3 mb-md-0 ">
+    Copyright © 2022. Todos los derechos reservados por el grupo 3.
+</div>

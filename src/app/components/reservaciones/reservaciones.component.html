@@ -1,0 +1,234 @@
+
+<header class="bg-dark py-8">
+    <div class="container px-100">
+        <div class="row gx-100 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6"></div>
+            <div class="my-4 text-center text-xl-start"></div>
+            <h1 class="display-5 fw-bolder text-white mb-2"><i class="bi bi-calendar-date"></i> Reservaciones</h1>
+            <p class=" fw-bolder lead fw-normal text-white-50 mb-4 justify-content-center">En esta sección puedes
+                realizar o solo visualizar una reservación.</p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+
+            </div>
+        </div>
+    </div>
+    </header>
+    <br>
+    <div class="container" >
+      <div class="input-group mb-3">
+        <input [(ngModel)]="searchReservacion" name="searchReservacion" type="text" class="form-control" placeholder="Buscar por Hotel, Habitación, Evento, Servicio..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
+      </div>
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"  >
+      <i class="bi bi-plus-circle"></i> Hacer Reservacion
+      </button>
+      <br>
+      <br>
+      <div class="row">
+        <div class="container-fluid col-12 col-md-4" *ngFor="let reserve of reservacionModelGet | searchReservacion:searchReservacion">
+            <div class="row">
+                  <div class="card text-center mb-3">
+                    <div class="card-header ">
+                      {{ reserve._id }}
+                    </div>
+                    <br>
+                    <img src="https://i.ibb.co/WcNDsFG/reserve.png" class="hola" width="200px" height="200px" alt="Usuarios" >
+                    <div class="card-body">
+                      <h5 class="card-title">Hotel: {{reserve.nombre}} </h5>
+                      <p class="card-text ">
+                        No. Habitación: {{reserve.numeroDeHabitacion}}
+                      </p>
+                      <p class="card-text">
+                        Evento: {{reserve.nombreEvento}}
+                      </p>
+                      <p class="card-text">
+                        Servicio Adquirido: {{reserve.nombreServicio}}
+                      </p>
+                      <p class="card-text">
+                        Fecha de Entrada: {{reserve.fechaInicio}}
+                      </p>
+                      <p class="card-text">
+                        Fecha de Salida: {{reserve.fechaFinal}}
+                      </p>
+                  
+                        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample" (click)="getReservacionId(reserve._id)" >
+                        <i class="bi bi-pencil-square"></i> Editar
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="deleteReservaciones(reserve._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button>
+                        
+                    </div>
+                  <div class="card-footer">
+                   ID Usuario: {{ reserve.idUsuario }}
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+              
+</div>
+    </div>
+
+  
+            <!--</div>
+            <div class="row g-0">
+                <div class="col-lg-6 text-white showcase-img"><img
+                        src="https://www.zodiacpoolblog.com/-/media/website-assets/zodiac-pool-blog/2019/ultimate-pool-party-guide/ultimate-pool-party-header-image.jpg?h=400&iar=0&w=600&rev=5a3ae6232f434c79b3dbf2ccdc432a38"
+                        class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+                <div class="col-lg-6 my-auto showcase-text">
+                    <h2 class=" col-lg-8 m-auto" style="text-align:left ;">Pool Party!! </h2>
+                    <p class="lead col-lg-8 m-auto ">Fiesta en la piscina del hotel, todos adentro!
+                        Las fiestas son realmente agradables, ven y haz la tuya!
+
+                        <br>
+                        <br>
+
+
+                        <button type="button" class="btn btn-outline-primary" disabled>!!Relajate!!</button>
+                    </p>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img"><img
+                        src="https://static.mfah.com/images/main-campus-18.15829485354753099698.jpg?width=1680"
+                        class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                    <h2 class=" col-lg-8 m-auto">Museo!!</h2>
+                    <p class="lead col-lg-8 m-auto ">Ven y diviertete es en este apasionante viaje a
+                        un museo en la noche!
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-outline-secondary" disabled>Nuevas Experiencias!!</button>
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-lg-6 text-white showcase-img"><img
+                    src="https://www.refinery29.com/images/10799357.png?format=webp&width=&height=&quality=85"
+                    class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+            <div class="col-lg-6 my-auto showcase-text">
+                <h2 class=" col-lg-8 m-auto" style="text-align:left ;">Tarjetas de Regalo!! </h2>
+                <p class="lead col-lg-8 m-auto ">Quieres regalar algo pues aqui puedes adquirir nuestras tarjhetas de
+                    regalo!!
+
+                    <br>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-outline-secondary" disabled>Adquiere tus tarjetas!!</button>
+
+                </p>
+            </div>
+        </div>
+
+    </section>-->
+
+    <!-- Modal Agregar Reservacion -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Reservacion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Nombre del Hotel</label>
+              <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="reservacionModelPost.nombre">
+            </div>
+            <div class="mb-3">
+                <label for="inputNumero" class="form-label">Numero de Habitacion</label>
+                <input type="text" class="form-control" id="inputNumero" name="numeroDeHabitacion" #numeroDeHabitacion="ngModel"
+                [(ngModel)]="reservacionModelPost.numeroDeHabitacion">
+              </div>
+              <div class="mb-3">
+                <label for="inputNombreEvento" class="form-label">Evento</label>
+                <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+                [(ngModel)]="reservacionModelPost.nombreEvento">
+              </div>
+              <div class="mb-3">
+                <label for="inputNombreServicio" class="form-label">Servicio Adquirido</label>
+                <input type="text" class="form-control" id="inputNombreServicio" name="nombreServicio" #nombreServicio="ngModel"
+                [(ngModel)]="reservacionModelPost.nombreServicio">
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaInicio" class="form-label">Fecha de Entrada</label>
+                <input type="text" class="form-control" id="inputFechaInicio" name="fechaInicio" #fechaInicio="ngModel"
+                [(ngModel)]="reservacionModelPost.fechaInicio">
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaFin" class="form-label">Fecha de Salida</label>
+                <input type="text" class="form-control" id="inputFechaFin" name="fechaFinal" #fechaFinal="ngModel"
+                [(ngModel)]="reservacionModelPost.fechaFinal">
+              </div>
+            
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postReservaciones()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="reservacionModelGetId.nombre">
+            </div>
+            <div class="mb-3">
+                <label for="inputNumero" class="form-label">Numero Habitacion</label>
+                <input type="text" class="form-control" id="inputNumero" name="numeroDeHabitacion" #numeroDeHabitacion="ngModel"
+                [(ngModel)]="reservacionModelGetId.numeroDeHabitacion">
+              </div>
+              <div class="mb-3">
+                <label for="inputNombreEvento" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+                [(ngModel)]="reservacionModelGetId.nombreEvento">
+              </div>
+              <div class="mb-3">
+                <label for="inputNombreServicio" class="form-label">Nombre Servicio</label>
+                <input type="text" class="form-control" id="inputNombreServicio" name="nombreServicio" #nombreServicio="ngModel"
+                [(ngModel)]="reservacionModelGetId.nombreServicio">
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaInicio" class="form-label">Fecha de Entrada</label>
+                <input type="text" class="form-control" id="inputFechaInicio" name="fechaInicio" #fechaInicio="ngModel"
+                [(ngModel)]="reservacionModelGetId.fechaInicio">
+              </div>
+              <div class="mb-3">
+                <label for="inputFechaFin" class="form-label">Fecha de Salida</label>
+                <input type="text" class="form-control" id="inputFechaFin" name="fechaFinal" #fechaFinal="ngModel"
+                [(ngModel)]="reservacionModelGetId.fechaFinal">
+              </div>
+        <button type="button" class="btn btn-dark"  (click)="putReservaciones()" data-bs-dismiss="offcanvas">Editar Reservacion</button>
+  
+        
+        
+      </form>
+    </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+        <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+            <div class="asado text-white mb-3 mb-md-0 ">
+              Copyright © 2022. Todos los derechos reservados por el grupo 3.
+            </div>
+            </div>

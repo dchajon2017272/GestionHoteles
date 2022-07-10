@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders}from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Hotel } from '../models/hotel.models';
+import { Habitacion } from '../models/habitacion.models';
+
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -48,14 +50,32 @@ export class HotelesService {
 
   }
 
-  agregarHotel(params): Observable<any>{
+  /*agregarHotel(params): Observable<any>{
     return this._http.post(environment.apiURL + '/agregarHotel', params, {headers:this.headersVariable})
+  }*/
+
+  agregarHotel(modeloHotel: Hotel): Observable<any>{
+    let parametros = JSON.stringify(modeloHotel);
+  
+    return this._http.post(this.url + '/agregarHotel', parametros, {headers:this.headersToken})
   }
+  
 
   obtenerHotelId(id : String): Observable<any> {
     return this._http.get(this.url + '/hoteles/' + id, { headers: this.headersVariable })
   }
 
+  obtenerHabitacionHotel(idHotel : String): Observable<any> {
+    return this._http.get(this.url + '/habitacionesHotel/' + idHotel, { headers: this.headersVariable })
+  }
+
+  obtenerEventoHotel(idHotel : String): Observable<any> {
+    return this._http.get(this.url + '/eventosHotel/' + idHotel, { headers: this.headersVariable })
+  }
+
+  obtenerServicioHotel(idHotel : String): Observable<any> {
+    return this._http.get(this.url + '/serviciosHotel/' + idHotel, { headers: this.headersVariable })
+  }
 
   editarHotel(modeloHotel: Hotel): Observable<any> {
     let parametros = JSON.stringify(modeloHotel);

@@ -35,7 +35,7 @@ export class UsuariosService {
   }
 
   updateUser(params, id){
-    return this._http.put(environment.apiURL + '/editarEmpresa/' + id, params, {headers:this.headersToken})
+    return this._http.put(environment.apiURL + '/editarUsuario/' + id, params, {headers:this.headersToken})
   }
 
   obtenerToken(){

@@ -14,7 +14,7 @@ export class UsuarioGuard implements CanActivate {
   canActivate(){
     let identidad2 = this.obtenerIdentidad();
 
-    if(identidad2.rol === 'Cliente'){
+    if(identidad2.rol === 'Cliente' ){
       alert("Un cliente no puede ver otros Clientes")
       return false;
     }

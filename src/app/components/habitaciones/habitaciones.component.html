@@ -1,0 +1,60 @@
+<br>
+<div class="container" >
+  <div class="input-group mb-3">
+    <input [(ngModel)]="searchRoom" name="searchRoom" type="text" class="form-control" placeholder="Para buscar Habitaciones disponibles colocar: Sí " aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
+  </div>
+<div >
+  <!-- Button Abrir Modal Agregar Producto 
+<button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"  >
+  Agregar Habitacion
+</button>-->
+</div>
+<br>
+<div *ngFor="let room of habitacionModelGet | searchRoom:searchRoom" >
+    <div class="row g-0 mb-3">
+      <div class="col-md-4">
+        <img src="https://i.ibb.co/TtMQhv2/1069432.png" class="img-fluid rounded-start" width="300px" height="300px" alt="..." > 
+      </div>
+      <div class="col-md-8" >
+        <div class="card-body">
+          <h5 class="card-title">Número Habitacion</h5>
+          <h5 class="card-title text-muted" style="font-size: 50px;">{{room.numeroDeHabitacion}}</h5>
+          <h5 class="card-text">Precio</h5>
+          <h5 class="card-text text-muted">Q{{room.precio}}</h5>
+          <h5 class="card-text">Disponibilidad</h5>
+          <h5 class="card-text text-muted">{{room.disponible}}</h5>
+          <div class="container">
+            <div class="row" >
+              <!--<div class="col" >
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample" (click)="getHabitacionId(room._id)" >
+                 Editar
+                </button>
+                <button type="button" class="btn btn-primary" (click)="deleteHabitaciones(room._id)" >Eliminar</button>
+
+              </div>-->
+              <div class="col" >
+                <button class="btn btn-dark" type="button" routerLink="/reservaciones" style="margin-left: 75%;"   >
+                  <i class="bi bi-card-text"></i> Alquilar
+                </button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+       
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+  <div class="asado text-white mb-3 mb-md-0 ">
+    Copyright © 2022. Todos los derechos reservados por el grupo 3.
+</div>

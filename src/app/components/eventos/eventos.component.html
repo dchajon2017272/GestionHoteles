@@ -1,0 +1,186 @@
+
+<header class="bg-dark py-8">
+    <div class="container px-100">
+        <div class="row gx-100 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6"></div>
+            <div class="my-4 text-center text-xl-start"></div>
+            <h1 class="display-5 fw-bolder text-white mb-2"><i class="bi bi-calendar-event"></i> Eventos</h1>
+            <p class=" fw-bolder lead fw-normal text-white-50 mb-4 justify-content-center">En esta sección puedes
+                encontrar algunos de los eventos disponibles que estan en los servicios</p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+
+            </div>
+        </div>
+    </div>
+    </header>
+    <br>
+    <div class="container" *ngIf="eventoModelGet">
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"  *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'||_usuarioService.obtenerIdentidad().rol=='Admin'">
+      <i class="bi bi-plus-circle"></i> Agregar Evento
+      </button>
+      <br>
+      <br>
+        <div class="container-fluid p-0" *ngFor="let event of eventoModelGet">
+            <div class="row g-0 ">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img">
+                    <img src="https://i.ibb.co/NCJH9Kh/event.png" class="imagen bd-placeholder-img img-fluid col-lg-8" width="50%" height="auto" alt="Eventos"></div>
+                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                    <h2 class=" col-lg-8 m-auto mb-3" style="text-align:left; font-size: 70px;">{{event.nombreEvento}} </h2>
+                    <h5 class=" col-lg-8 m-auto mb-2 text-muted" style="text-align:left ;">{{event.descripcion}}</h5>
+                    <h5 class=" col-lg-8 m-auto text-muted mb-3" style="text-align:left ;">Precio: Q{{event.precio}}</h5>
+                    <div class="col" style="margin-left: 55%;" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'||_usuarioService.obtenerIdentidad().rol=='Admin'">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample" (click)="getEventoId(event._id)" >
+                        <i class="bi bi-pencil-square"></i> Editar
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="deleteEventos(event._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button>
+                        
+                      </div>
+                </div>
+            </div>
+              
+</div>
+    </div>
+            <!--</div>
+            <div class="row g-0">
+                <div class="col-lg-6 text-white showcase-img"><img
+                        src="https://www.zodiacpoolblog.com/-/media/website-assets/zodiac-pool-blog/2019/ultimate-pool-party-guide/ultimate-pool-party-header-image.jpg?h=400&iar=0&w=600&rev=5a3ae6232f434c79b3dbf2ccdc432a38"
+                        class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+                <div class="col-lg-6 my-auto showcase-text">
+                    <h2 class=" col-lg-8 m-auto" style="text-align:left ;">Pool Party!! </h2>
+                    <p class="lead col-lg-8 m-auto ">Fiesta en la piscina del hotel, todos adentro!
+                        Las fiestas son realmente agradables, ven y haz la tuya!
+
+                        <br>
+                        <br>
+
+
+                        <button type="button" class="btn btn-outline-primary" disabled>!!Relajate!!</button>
+                    </p>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img"><img
+                        src="https://static.mfah.com/images/main-campus-18.15829485354753099698.jpg?width=1680"
+                        class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                    <h2 class=" col-lg-8 m-auto">Museo!!</h2>
+                    <p class="lead col-lg-8 m-auto ">Ven y diviertete es en este apasionante viaje a
+                        un museo en la noche!
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-outline-secondary" disabled>Nuevas Experiencias!!</button>
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-lg-6 text-white showcase-img"><img
+                    src="https://www.refinery29.com/images/10799357.png?format=webp&width=&height=&quality=85"
+                    class="imagen bd-placeholder-img img-fluid" width="100%" height="auto" alt="..."></div>
+            <div class="col-lg-6 my-auto showcase-text">
+                <h2 class=" col-lg-8 m-auto" style="text-align:left ;">Tarjetas de Regalo!! </h2>
+                <p class="lead col-lg-8 m-auto ">Quieres regalar algo pues aqui puedes adquirir nuestras tarjhetas de
+                    regalo!!
+
+                    <br>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-outline-secondary" disabled>Adquiere tus tarjetas!!</button>
+
+                </p>
+            </div>
+        </div>
+
+    </section>-->
+
+    <!-- Modal Agregar Evento -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Evento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombreEvento" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+              [(ngModel)]="eventoModelPost.nombreEvento">
+            </div>
+            <div class="mb-3">
+                <label for="inputDescripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="eventoModelPost.descripcion">
+              </div>
+            <div class="mb-3">
+              <label for="inputPrecio" class="form-label">Precio</label>
+              <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+              [(ngModel)]="eventoModelPost.precio">
+            </div>
+            <div class="mb-3">
+                <label for="inputIdHotel" class="form-label">ID Hotel</label>
+                <input type="text" class="form-control" id="inputIdHotel" name="idHotel" #idHotel="ngModel"
+                [(ngModel)]="eventoModelPost.idHotel">
+              </div>
+             
+            
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postEventos()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   <!-- offCanvas Editar Producto -->
+   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+              <label for="inputNombreEvento" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+              [(ngModel)]="eventoModelGetId.nombreEvento">
+            </div>
+            <div class="mb-3">
+                <label for="inputDescripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="eventoModelGetId.descripcion">
+              </div>
+            <div class="mb-3">
+              <label for="inputPrecio" class="form-label">Precio</label>
+              <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+              [(ngModel)]="eventoModelGetId.precio">
+            </div>
+            <div class="mb-3">
+                <label for="inputIdHotel" class="form-label">ID Hotel</label>
+                <input type="text" class="form-control" id="inputIdHotel" name="idHotel" #idHotel="ngModel"
+                [(ngModel)]="eventoModelGetId.idHotel">
+              </div>
+        <button type="button" class="btn btn-dark"  (click)="putEventos()" data-bs-dismiss="offcanvas">Editar Evento</button>
+  
+        
+        
+      </form>
+    </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+        <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+            <div class="asado text-white mb-3 mb-md-0 ">
+              Copyright © 2022. Todos los derechos reservados por el grupo 3.
+            </div>
+            </div>
